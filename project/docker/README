@@ -1,0 +1,7 @@
+This area is for the automatic packaging of this application/service into a docker container for
+deployment.
+
+All that one needs to do in order to build this application is run the following command inside this
+folder:
+
+bash build.sh
