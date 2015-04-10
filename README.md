@@ -20,3 +20,6 @@ cd docker
 bash build.sh
 bash run-container.sh
 ```
+
+### Private docker registry
+Click [here](http://blog.programster.org/2015/03/17/run-your-own-private-docker-registry/) to find out how to deploy your own private docker registry in under a minute.
