@@ -35,4 +35,4 @@ fi
 docker push $IMAGE_NAME
 
 echo "Run the container with the following command:"
-echo "bash start-container.sh"
+echo "bash run-container.sh"
