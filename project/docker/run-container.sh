@@ -34,6 +34,7 @@ if [ $RESULT -gt 0 ];then
 else
     echo "Deploying frontend proxy"
     docker run -d \
+    --restart=always \
     -p 80:80 \
     -v /var/run/docker.sock:/tmp/docker.sock \
     -t jwilder/nginx-proxy
@@ -46,6 +47,7 @@ docker run -d \
 -e VIRTUAL_HOST=$VIRTUAL_HOST \
 -p 80 \
 -p 443 \
+--restart=always \
 --name="$PROJECT_NAME" \
 $CONTAINER_IMAGE
 
