@@ -14,7 +14,7 @@ RUN apt-get install vim apache2 libapache2-mod-php5 php5-cli php5-mysqlnd curl p
 RUN a2enmod php5
 
 # Enable headers for CORS request for Swagger UI
-RUN a2enmod headers
+RUN a2enmod rewrite
 
 # Add our websites files to the default apache directory (/var/www)
 
