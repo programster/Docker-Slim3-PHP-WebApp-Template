@@ -1,4 +1,5 @@
-# docker-php-website-template
+# Docker Slim3 PHP7.1 WebApp Template
+
 A template to build websites using PHP 7.1 with Debian 8 docker containers. This currently uses the [slim framework](http://www.slimframework.com/) version 3.
 
 ### Usage
