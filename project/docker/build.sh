@@ -27,12 +27,15 @@ read -p "Do you want to use a cached build (y/n)? " -n 1 -r
 echo ""   # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-    docker build --tag="$IMAGE_NAME" .
+    docker build --pull --tag="$IMAGE_NAME" .
 else
-    docker build --no-cache --tag="$IMAGE_NAME" .
+    docker build --pull --no-cache --tag="$IMAGE_NAME" .
 fi
+
+# clean up
+rm Dockerfile
 
 docker push $IMAGE_NAME
 
 echo "Run the container with the following command:"
-echo "bash run-container.sh"
+echo "bash deploy.sh"

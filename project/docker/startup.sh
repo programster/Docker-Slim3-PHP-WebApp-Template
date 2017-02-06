@@ -5,14 +5,7 @@
 /usr/sbin/apache2 -D APACHE_PROCESS &
 
 
-
-
-
-
 # Put any startup tasks here!
-
-
-
 
 
 

@@ -1,30 +1,25 @@
 # Due to layout of this project, the dockerfile will be moved up two directories and run during
 # the build. Thus when performing any ADD commands, remember that this is "where you are"
 
-FROM ubuntu:14.04
+FROM debian:jessie
 
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 
+RUN apt install apt-transport-https wget lsb-release ca-certificates -y
+RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" |  tee /etc/apt/sources.list.d/php.list
+
+RUN apt update
+RUN apt install php7.1 -y
 
 # Install the relevant packages
-RUN apt-get install vim apache2 libapache2-mod-php5 php5-cli php5-mysqlnd curl php5-curl zip -y
+RUN apt-get install vim apache2 php7.1-cli php7.1-mysql curl php7.1-curl -y
 
 # Enable the php mod we just installed
-RUN a2enmod php5
-
-# Enable headers for CORS request for Swagger UI
+RUN a2enmod php7.1
 RUN a2enmod rewrite
 
-# Add our websites files to the default apache directory (/var/www)
-
-ADD settings /var/www/my-site/settings
-
-# Add our websites files to the default apache directory (/var/www)
-ADD project /var/www/my-site/project
-
-# Update our apache sites available with the config we created
-ADD project/docker/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # expose port 80 and 443 (ssl) for the web requests
 EXPOSE 80
@@ -62,6 +57,14 @@ ENV APACHE_PID_FILE /var/run/apache2/apache2.pid
 
 # Install the cron service to tie up the container's foreground process
 RUN apt-get install cron -y
+
+# Add our websites files to the default apache directory (/var/www)
+# This should be as late as possible in the dockerfile to speed up rebuilds
+ADD settings /var/www/my-site/settings
+ADD project /var/www/my-site/project
+
+# Update our apache sites available with the config we created
+ADD project/docker/apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
 # Use the crontab file.
 # The crontab file was already added when we added "project"

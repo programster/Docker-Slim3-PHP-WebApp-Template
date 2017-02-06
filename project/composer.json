@@ -1,5 +1,6 @@
 {
     "require": {
-        "slim/slim": "2.6.*"
+        "slim/slim": "^3.7",
+        "irap/autoloader": "^1.0"
     }
 }

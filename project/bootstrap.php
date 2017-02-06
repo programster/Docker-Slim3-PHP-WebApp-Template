@@ -7,8 +7,20 @@
  * it should only contain logic that any processes/services will need.
  */
 
-require_once(__DIR__ . '/vendor/autoload.php'); # this autoloads all vendor packages
 
+
+require_once(__DIR__ . '/vendor/autoload.php'); # this autoloads all vendor packages
 require_once(__DIR__ . '/../settings/settings.php');
 
-# put your stuff here....
+
+// Define which folders contain all of our php classes.
+$classDirs = array(
+    __DIR__ . '/controllers',
+    __DIR__ . '/models',
+    __DIR__ . '/views'
+);
+
+$autoloader = new iRAP\Autoloader\Autoloader($classDirs);
+
+
+# put your custom init stuff here....

@@ -2,10 +2,25 @@
 
 require_once(__DIR__ . '/../bootstrap.php');
 
-$app = new \Slim\Slim();
+if (ENVIRONMENT === 'dev')
+{
+    $app = new \Slim\App([
+        'settings' => [
+            'displayErrorDetails' => true
+        ]
+    ]);
+}
+else 
+{
+    $app = new Slim\App();
+}
 
-$app->get('/', function () {
-    echo "Welcome to the programster's default template.";
+// Define app routes below
+
+// Show the home page.
+$app->get('/', function (Slim\Http\Request $request, \Slim\Http\Response $response, $args) {
+    $homeController = new HomeController($request, $response, $args);
+    return $homeController->index();
 });
 
 $app->run();

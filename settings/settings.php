@@ -12,4 +12,4 @@ class Settings
 }
 
 # Or use defines.
-define("hello", "world");
+define("ENVIRONMENT", "dev");

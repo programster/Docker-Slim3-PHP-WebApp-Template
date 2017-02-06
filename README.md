@@ -1,5 +1,5 @@
 # docker-php-website-template
-A template to kick off a dockerized website built in PHP. This currently uses the [slim framework](http://www.slimframework.com/)
+A template to build websites using PHP 7.1 with Debian 8 docker containers. This currently uses the [slim framework](http://www.slimframework.com/) version 3.
 
 ### Usage
 
