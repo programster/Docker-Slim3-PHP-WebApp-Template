@@ -19,7 +19,7 @@ composer update
 # Build the container and run it.
 cd docker
 bash build.sh
-bash run-container.sh
+bash deploy.sh
 ```
 
 ### Private docker registry
