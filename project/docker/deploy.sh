@@ -24,29 +24,10 @@ docker kill $PROJECT_NAME
 docker rm $PROJECT_NAME
 
 
-#######################
-# ensure that we are running the frontend proxy 
-# which allows us to run multiple web containers
-RESULT=`docker ps | grep jwilder | wc -l`
-
-if [ $RESULT -gt 0 ];then
-    echo "found frontend proxy."
-else
-    echo "Deploying frontend proxy"
-    docker run -d \
-    --restart=always \
-    -p 80:80 \
-    -v /var/run/docker.sock:/tmp/docker.sock \
-    -t jwilder/nginx-proxy
-fi
-#######################
-
-
 # Now start our site container.
 docker run -d \
--e VIRTUAL_HOST=$VIRTUAL_HOST \
--p 80 \
--p 443 \
+-p 80:80 \
+-p 443:443 \
 --restart=always \
 --name="$PROJECT_NAME" \
 $CONTAINER_IMAGE
