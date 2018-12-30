@@ -10,7 +10,7 @@
 
 
 require_once(__DIR__ . '/vendor/autoload.php'); # this autoloads all vendor packages
-require_once(__DIR__ . '/../settings/settings.php');
+require_once(__DIR__ . '/settings.php');
 
 
 // Define which folders contain all of our php classes.
