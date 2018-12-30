@@ -1,23 +1,24 @@
 # Due to layout of this project, the dockerfile will be moved up two directories and run during
 # the build. Thus when performing any ADD commands, remember that this is "where you are"
 
-FROM debian:jessie
+FROM ubuntu:18.04
+
+# Don't prompt for timezone etc.
+env DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 
-RUN apt install apt-transport-https wget lsb-release ca-certificates -y
-RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" |  tee /etc/apt/sources.list.d/php.list
-
 RUN apt update
-RUN apt install php7.1 -y
+RUN apt install php7.2 -y
+
+
 
 # Install the relevant packages
-RUN apt-get install vim apache2 php7.1-cli php7.1-mysql curl php7.1-curl -y
+RUN apt-get install -y vim apache2 php7.2-cli php7.2-mysql curl php7.2-curl
 
 # Enable the php mod we just installed
-RUN a2enmod php7.1
+RUN a2enmod php7.2
 RUN a2enmod rewrite
 
 
