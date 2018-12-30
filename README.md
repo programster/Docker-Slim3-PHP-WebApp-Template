@@ -4,7 +4,7 @@ A template to build websites using PHP 7.1 with Debian 8 docker containers. This
 
 ### Usage
 
-```
+```bash
 # Clone this repo
 git clone https://github.com/programster/Docker-Slim3-PHP7.1-WebApp-Template.git
 
