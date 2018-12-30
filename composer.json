@@ -1,5 +1,5 @@
 {
-    "name": "Programster/WebAppTemplate",
+    "name": "programster/web-app-template",
     "type": "template",
     "description": "A project template to make creating webapps easier.",
     "keywords": ["template","webapp"],
