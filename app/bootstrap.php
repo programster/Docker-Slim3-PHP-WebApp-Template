@@ -7,11 +7,15 @@
  * it should only contain logic that any processes/services will need.
  */
 
-
-
 require_once(__DIR__ . '/vendor/autoload.php'); # this autoloads all vendor packages
-require_once(__DIR__ . '/settings.php');
 
+
+# Set up dotenv so environment variables loaded from .env file.
+$dotenv = new \Symfony\Component\Dotenv\Dotenv();
+$dotenv->load(__DIR__ . '/.env');
+
+
+# Now load the ENVIRONMENT variable from the .env file.
 $environment = getenv("ENVIRONMENT");
 
 if ($environment === FALSE)
