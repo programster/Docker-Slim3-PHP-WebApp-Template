@@ -9,10 +9,10 @@ This currently uses the [slim framework](http://www.slimframework.com/) version 
 
 ```bash
 # Clone this repo
-git clone https://github.com/programster/Docker-Slim3-PHP7.1-WebApp-Template.git
+git clone https://github.com/programster/Docker-Slim3-PHP-WebApp-Template.git
 
 # Use composer to pull the slim framework
-cd Docker-Slim3-PHP7.1-WebApp-Template/app
+cd Docker-Slim3-PHP-WebApp-Template/app
 composer update
 
 # Create the .env file from the template file
