@@ -13,14 +13,22 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd $SCRIPTPATH
 
 # Load settings (environment variables)
-source ../../settings/docker_settings.sh
+source ../app/.env
 
-IMAGE_NAME="`echo $REGISTRY`/`echo $PROJECT_NAME`"
+if [[ $REGISTRY ]]; then
+    IMAGE_NAME="`echo $REGISTRY`/`echo $PROJECT_NAME`"
+else
+    IMAGE_NAME="`echo $PROJECT_NAME`"
+fi
+
+
 
 # Copy the docker file up and run it in order to build the container.
 # We need to move the dockerfile up so that it can easily add everything to the container.
-cp -f Dockerfile ../../.
-cd ../../.
+cp -f Dockerfile ../.
+cp -f .dockerignore ../.
+cd ..
+
 
 # Ask the user if they want to use the docker cache
 read -p "Do you want to use a cached build (y/n)? " -n 1 -r
@@ -34,8 +42,14 @@ fi
 
 # clean up
 rm Dockerfile
+rm .dockerignore
 
-docker push $IMAGE_NAME
 
+# If the registry is configured, push the built image.
+if [[ $REGISTRY ]]; then
+    docker push $IMAGE_NAME
+fi
+
+echo ""
 echo "Run the container with the following command:"
 echo "bash deploy.sh"

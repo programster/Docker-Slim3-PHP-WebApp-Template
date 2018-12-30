@@ -14,9 +14,14 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 cd $SCRIPTPATH
 
 # load the variables from the relative path
-source ../../settings/docker_settings.sh
+source ../app/.env
 
-CONTAINER_IMAGE="`echo $REGISTRY`/`echo $PROJECT_NAME`"
+
+if [[ $REGISTRY ]]; then
+    CONTAINER_IMAGE="`echo $REGISTRY`/`echo $PROJECT_NAME`"
+else
+    CONTAINER_IMAGE="`echo $PROJECT_NAME`"
+fi
 
 # Kill the site if it is already running.
 # e.g. we are replacing the container
@@ -26,9 +31,10 @@ docker rm $PROJECT_NAME
 
 # Now start our site container.
 docker run -d \
--p 80:80 \
--p 443:443 \
---restart=always \
---name="$PROJECT_NAME" \
-$CONTAINER_IMAGE
+  -p 80:80 \
+  -p 443:443 \
+  --env-file ../app/.env \
+  --restart=always \
+  --name="$PROJECT_NAME" \
+  $CONTAINER_IMAGE
 
