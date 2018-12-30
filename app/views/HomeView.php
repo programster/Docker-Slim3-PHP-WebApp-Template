@@ -27,6 +27,7 @@ class HomeView extends AbstractView
         
         <h2>Hello there!</h2>
         <p>The passed in message was: <?= $this->m_message; ?></p>
+        <p>Your environment is set to: <?= ENVIRONMENT; ?></p>
         
         <?php
     }
