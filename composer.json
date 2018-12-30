@@ -1,0 +1,16 @@
+{
+    "name": "Programster/WebAppTemplate",
+    "type": "template",
+    "description": "A project template to make creating webapps easier.",
+    "keywords": ["template","webapp"],
+    "homepage": "https://github.com/programster/Docker-Slim3-PHP-WebApp-Template",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stuart Page",
+            "email": "sdpagent@gmail.com",
+            "homepage": "blog.programster.org",
+            "role": "Developer"
+        }
+    ]
+}
