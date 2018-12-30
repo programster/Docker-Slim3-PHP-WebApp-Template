@@ -1,6 +1,7 @@
 {
     "require": {
         "slim/slim": "^3.7",
-        "irap/autoloader": "^1.0"
+        "irap/autoloader": "^1.0",
+        "symfony/dotenv": "^3.4"
     }
 }
