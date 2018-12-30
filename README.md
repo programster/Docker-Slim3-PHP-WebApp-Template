@@ -9,15 +9,16 @@ A template to build websites using PHP 7.1 with Debian 8 docker containers. This
 git clone https://github.com/programster/Docker-Slim3-PHP7.1-WebApp-Template.git
 
 # Use composer to pull the slim framework
-cd Docker-Slim3-PHP7.1-WebApp-Template/project
+cd Docker-Slim3-PHP7.1-WebApp-Template/app
 composer update
 
-# Edit the content of the docker_settings.php in the settings folder
-# and point it to your own private docker registry.
-# Change the VIRTUAL_HOST and the PROJECT_NAME whilst you're at it.
+# Create the .env file from the template file
+# be sure to review its settings and fill in appropriately.
+cp .env.tmpl .env
 
-# Build the container and run it.
-cd docker
+
+# Build and deploy the docker container.
+cd ../docker
 bash build.sh
 bash deploy.sh
 ```
