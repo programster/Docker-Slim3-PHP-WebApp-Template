@@ -8,8 +8,8 @@ This currently uses the [slim framework](http://www.slimframework.com/) version 
 ### Usage
 
 ```bash
-# Clone this repo
-git clone https://github.com/programster/Docker-Slim3-PHP-WebApp-Template.git
+# Create your project from this template using composer.
+composer create-project programster/web-app-template my-project-name
 
 # Use composer to pull the slim framework
 cd Docker-Slim3-PHP-WebApp-Template/app
